@@ -1,15 +1,9 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
----
 title: "Project T"
 author: "Fabio"
 date: "`r Sys.Date()`"
 output:
   ioslides_presentation: default
-  beamer_presentation: default
+  beamer_presentation: default  Fabio Massimo Lattanzio
   slidy_presentation: default
   powerpoint_presentation: default
 
@@ -35,19 +29,13 @@ boxplot(Fatturato$Importo,ylab="Euro", main="Importo")
 boxplot(Fatturato$Prezzo,ylab="Euro", main="Prezzo")
 boxplot(Fatturato$Q.tà,ylab="N°Articoli", main="Q.tà")
  
-par(mfrow=c(1,3))
-hist(Fatturato$Q.tà)
-plot(density(Fatturato$Q.tà))
-hist(Fatturato$Q.tà,freq=F,add=T)
-qqnorm(Fatturato$Q.tà)
-shapiro.test(Fatturato$Q.tà)
+par(mfrow=c(1,2))
+hist(Fatturato$Q.tà, main="Istogramma Q.tà", xlab="N°Articoli per Vendita", ylab="N°Vendite")
+qqnorm(Fatturato$Q.tà, main="Q-Q Plot Q.tà", ylab="N°Articoli per Vendità", xlab="Quantili")
 
-par(mfrow=c(1,3))
-hist(Fatturato$Importo)
-plot(density(Fatturato$Importo))
-hist(Fatturato$Importo,freq=F,add=T)
-qqnorm(Fatturato$Importo)
-shapiro.test(Fatturato$Importo)
+par(mfrow=c(1,2))
+hist(Fatturato$Importo, main="Istogramma Importo",ylab="N°Vendite", xlab="Importo per Vendità in Euro")
+qqnorm(Fatturato$Importo, main="Q-Q Plot Importo", ylab="Importo per Vendità in Euro", xlab="Quantili")
 
 plot(Fatturato$Mese_Anno, Fatturato$Importo, 
       xlab="Mesi", ylab="Importo", main="Importo per Vendita Mensile")
@@ -109,6 +97,10 @@ ggplot(FattCatt, aes(x=Mese_Anno)) +
   geom_line(aes(y = STRUMENTI_MUSICALI), color ="darkgreen") + 
   ggtitle("Importo vendite distinto per serie") + 
    xlab("Mesi") + ylab("Importo in Euro") 
+
+data(Fatturato)   
+plot(data = Fatturato, Importo ~ Mese_Anno, ylab = "Importo", xlab="Mesi", main="Trand Andamento Negozio")
+abline(lm(data = Fatturato, Importo ~ Mese_Anno), col = "red")
 
 
 
