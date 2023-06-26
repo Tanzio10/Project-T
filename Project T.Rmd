@@ -9,6 +9,13 @@ output:
 
 ## Grafici
 
+install.packages("readxl")
+install.packages("Rcpp"")
+install.packages("ggplot2")
+library(readxl)
+library(Rcpp)
+library(ggplot2)
+
 str(Magazzino)
 str(Fatturato)
 summary(Magazzino)
